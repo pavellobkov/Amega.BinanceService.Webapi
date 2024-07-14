@@ -30,7 +30,7 @@ namespace Amega.BinanceService.Webapi.Controllers
         {
             try
             {
-                var result = await BinanceDataProvider.Instance.GetCurrencyByName(instrument);
+                var result = await BinanceDataProvider.Instance.GetCurrentCurrencyByName(instrument);
                 return Ok(new { Instrument = result.Currency, Price = result.Price });
             }
             catch (Exception ex)

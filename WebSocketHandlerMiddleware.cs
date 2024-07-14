@@ -55,7 +55,9 @@ namespace Amega.BinanceService.Webapi
 
                 await Task.Delay(800);
 
-                var updateMessage = Encoding.UTF8.GetBytes(BinanceDataProvider.Instance.CurrentReceivedMessage);
+                var currency = await BinanceDataProvider.Instance.GetCurrentCurrencyByName(instrument.Instrument);
+                var updateMessage = Encoding.UTF8.GetBytes(currency.SourceMessage);
+
                 await webSocket.SendAsync(new ArraySegment<byte>(updateMessage), WebSocketMessageType.Text, true, cancellationToken);            
             }
         }    

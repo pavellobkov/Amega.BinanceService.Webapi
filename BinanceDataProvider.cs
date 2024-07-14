@@ -67,11 +67,11 @@ namespace Amega.BinanceService.Webapi
             }
         }
 
-        public async Task<ReceivedCurrency> GetCurrencyByName(string name)
+        public async Task<ReceivedCurrency> GetCurrentCurrencyByName(string name)
         {
             return await Task.Run(() =>
             {
-                return name switch
+                return name.ToUpper() switch
                 {
                     "BTCUSD" => CurrentBTCUSD,
                     "EURUSD" => CurrentBTCUSD,
